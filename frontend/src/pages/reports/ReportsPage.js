@@ -87,6 +87,7 @@ export default function ReportsPage() {
     loadChartData();
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(load, [reportKey]);
 
   const handleExport = async (format) => {

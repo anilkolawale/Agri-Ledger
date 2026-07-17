@@ -28,6 +28,7 @@ export default function ExpensesListPage() {
       .finally(() => setLoading(false));
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(load, [page, pageSize]);
 
   const handleSearch = (e) => {

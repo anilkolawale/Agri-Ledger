@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Box, Paper, Typography, useTheme } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 export default function FinanceChart({ data = [] }) {
-  const { t, i18n } = useTranslation();
-  const theme = useTheme();
+  const { i18n } = useTranslation();
   const [hoveredBar, setHoveredBar] = useState(null);
 
   if (!data || data.length === 0) {

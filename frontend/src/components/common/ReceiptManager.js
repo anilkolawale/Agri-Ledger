@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Box, Typography, Button, List, ListItem, ListItemText, IconButton, Link } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
@@ -10,12 +10,12 @@ export default function ReceiptManager({ ownerType, ownerId }) {
   const [receipts, setReceipts] = useState([]);
   const [uploading, setUploading] = useState(false);
 
-  const load = () => {
+  const load = useCallback(() => {
     const getFn = ownerType === "expense" ? receiptApi.getForExpense : receiptApi.getForIncome;
     getFn(ownerId).then(({ data }) => setReceipts(data.data));
-  };
+  }, [ownerType, ownerId]);
 
-  useEffect(() => { if (ownerId) load(); }, [ownerId]);
+  useEffect(() => { if (ownerId) load(); }, [ownerId, load]);
 
   const handleUpload = async (e) => {
     const file = e.target.files?.[0];
