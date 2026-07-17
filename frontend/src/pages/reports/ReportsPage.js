@@ -23,7 +23,7 @@ const REPORT_TYPES = [
 ];
 
 export default function ReportsPage() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const isMarathi = i18n.language === "mr";
 
   const [reportKey, setReportKey] = useState("expenses");

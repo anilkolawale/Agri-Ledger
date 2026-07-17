@@ -38,7 +38,7 @@ const getWeatherInfo = (code, lang) => {
 };
 
 export default function WeatherWidget() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -65,6 +65,7 @@ export default function WeatherWidget() {
 
   useEffect(() => {
     fetchWeather(coords.latitude, coords.longitude);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [coords]);
 
   const requestLocation = () => {
