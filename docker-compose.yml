@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: agriledger-db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password_123
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Password_123", "-Q", "SELECT 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    image: agriledger-backend
+    container_name: agriledger-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Database=AgriLedgerDb;User Id=sa;Password=Password_123;TrustServerCertificate=True;
+      - Jwt__Key=REPLACE_WITH_A_LONG_RANDOM_SECRET_AT_LEAST_32_CHARS_LONG
+      - Migrate__Database=true
+      - Seed__Demo=true
+      - Cors__AllowedOrigins__0=http://localhost:3000
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - backend-uploads:/app/wwwroot/uploads
+
+  frontend:
+    image: agriledger-frontend
+    container_name: agriledger-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_API_BASE_URL=http://localhost:5000/api
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  sqlserver-data:
+  backend-uploads:

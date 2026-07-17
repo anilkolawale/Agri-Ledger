@@ -1,0 +1,50 @@
+{
+  "appName": "AgriLedger",
+  "tagline": "तुमची डिजिटल शेत डायरी",
+  "nav": { "dashboard": "डॅशबोर्ड", "farms": "शेत", "crops": "पिके", "expenses": "खर्च", "income": "उत्पन्न", "labor": "मजूर", "inventory": "इन्व्हेंटरी", "mandi": "बाजार भाव", "reports": "अहवाल", "profile": "प्रोफाइल", "logout": "लॉगआउट", "admin": "प्रशासकीय पॅनेल" },
+  "auth": {
+    "login": "लॉगिन", "register": "नोंदणी करा", "email": "ईमेल", "password": "पासवर्ड",
+    "fullName": "पूर्ण नाव", "phoneNumber": "फोन नंबर", "confirmPassword": "पासवर्डची पुष्टी करा",
+    "forgotPassword": "पासवर्ड विसरलात?", "noAccount": "खाते नाही?", "haveAccount": "आधीच खाते आहे?",
+    "loginButton": "लॉगिन करा", "registerButton": "खाते तयार करा"
+  },
+  "dashboard": {
+    "title": "डॅशबोर्ड", "subtitle": "तुमचा शेती सारांश पहा",
+    "totalFarms": "एकूण शेत", "todaysExpense": "आजचा खर्च", "monthlyExpense": "मासिक खर्च",
+    "totalIncome": "एकूण उत्पन्न", "totalExpense": "एकूण खर्च", "netProfit": "निव्वळ नफा",
+    "upcomingHarvests": "आगामी कापणी"
+  },
+  "farm": { "addFarm": "शेत जोडा", "farmName": "शेताचे नाव", "area": "क्षेत्रफळ (एकर)", "location": "स्थान" },
+  "expense": { "addExpense": "खर्च जोडा", "amount": "रक्कम", "category": "श्रेणी", "date": "तारीख", "paymentMethod": "पेमेंट पद्धत" },
+  "income": { "addIncome": "उत्पन्न जोडा", "buyerName": "खरेदीदाराचे नाव", "quantity": "प्रमाण", "pricePerUnit": "प्रति युनिट किंमत" },
+  "common": { "save": "जतन करा", "cancel": "रद्द करा", "edit": "संपादित करा", "delete": "हटवा", "search": "शोधा", "loading": "लोड होत आहे..." },
+  "admin": {
+    "title": "प्रणाली प्रशासन",
+    "totalUsers": "एकूण वापरकर्ते",
+    "totalFarms": "एकूण शेत",
+    "totalCrops": "एकूण पिके",
+    "totalIncome": "प्रणाली उत्पन्न",
+    "totalExpense": "प्रणाली खर्च",
+    "userManagement": "वापरकर्ता व्यवस्थापन",
+    "searchPlaceholder": "नाव किंवा ईमेलद्वारे शोधा...",
+    "fullName": "पूर्ण नाव",
+    "email": "ईमेल",
+    "phone": "फोन",
+    "role": "भूमिका",
+    "farms": "शेतांची संख्या",
+    "joined": "नोंदणी तारीख",
+    "actions": "कृती",
+    "noUsersFound": "वापरकर्ते आढळले नाहीत",
+    "deleteTitle": "वापरकर्ता हटवायचा?",
+    "deleteConfirm": "तुम्हाला खरोखर वापरकर्ता हटवायचा आहे का",
+    "deleteWarning": "यामुळे त्यांचे खाते तात्पुरते/सॉफ्ट-हटवले जाईल."
+  },
+  "profile": {
+    "title": "वापरकर्ता प्रोफाइल",
+    "address": "पत्ता / शेताचे स्थान",
+    "language": "पसंतीची भाषा",
+    "saveSuccess": "प्रोफाइल यशस्वीरित्या जतन केले गेले!",
+    "emailReadonly": "ईमेल पत्ता बदलता येणार नाही"
+  }
+}
+

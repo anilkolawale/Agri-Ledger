@@ -1,0 +1,18 @@
+# .NET
+bin/
+obj/
+*.user
+appsettings.Production.json
+
+# Node
+node_modules/
+build/
+.env
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

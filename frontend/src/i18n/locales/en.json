@@ -1,0 +1,50 @@
+{
+  "appName": "AgriLedger",
+  "tagline": "Your Digital Farm Diary",
+  "nav": { "dashboard": "Dashboard", "farms": "Farms", "crops": "Crops", "expenses": "Expenses", "income": "Income", "labor": "Labor", "inventory": "Inventory", "mandi": "Market Prices", "reports": "Reports", "profile": "Profile", "logout": "Logout", "admin": "Admin Panel" },
+  "auth": {
+    "login": "Login", "register": "Register", "email": "Email", "password": "Password",
+    "fullName": "Full Name", "phoneNumber": "Phone Number", "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?", "noAccount": "Don't have an account?", "haveAccount": "Already have an account?",
+    "loginButton": "Login", "registerButton": "Create Account"
+  },
+  "dashboard": {
+    "title": "Dashboard", "subtitle": "View your farm summary",
+    "totalFarms": "Total Farms", "todaysExpense": "Today's Expense", "monthlyExpense": "Monthly Expense",
+    "totalIncome": "Total Income", "totalExpense": "Total Expense", "netProfit": "Net Profit",
+    "upcomingHarvests": "Upcoming Harvests"
+  },
+  "farm": { "addFarm": "Add Farm", "farmName": "Farm Name", "area": "Area (Acres)", "location": "Location" },
+  "expense": { "addExpense": "Add Expense", "amount": "Amount", "category": "Category", "date": "Date", "paymentMethod": "Payment Method" },
+  "income": { "addIncome": "Add Income", "buyerName": "Buyer Name", "quantity": "Quantity", "pricePerUnit": "Price Per Unit" },
+  "common": { "save": "Save", "cancel": "Cancel", "edit": "Edit", "delete": "Delete", "search": "Search", "loading": "Loading..." },
+  "admin": {
+    "title": "System Administration",
+    "totalUsers": "Total Users",
+    "totalFarms": "Total Farms",
+    "totalCrops": "Total Crops",
+    "totalIncome": "System Income",
+    "totalExpense": "System Expense",
+    "userManagement": "User Management",
+    "searchPlaceholder": "Search by name, email...",
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "role": "Role",
+    "farms": "Farms Count",
+    "joined": "Joined Date",
+    "actions": "Actions",
+    "noUsersFound": "No users found",
+    "deleteTitle": "Delete User?",
+    "deleteConfirm": "Are you sure you want to delete user",
+    "deleteWarning": "This will soft-delete their account."
+  },
+  "profile": {
+    "title": "User Profile",
+    "address": "Address / Farm Location",
+    "language": "Preferred Language",
+    "saveSuccess": "Profile updated successfully!",
+    "emailReadonly": "Email address cannot be changed"
+  }
+}
+

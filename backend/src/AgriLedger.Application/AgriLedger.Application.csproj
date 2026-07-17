@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Needed because this class library references IFormFile (IReceiptService/IFileStorageService).
+         Do NOT use the old Microsoft.AspNetCore.Http.Abstractions NuGet package here — it predates
+         .NET Core 3+, is not net8.0-compatible, and will conflict with the real framework types
+         the API (Sdk.Web) project already has. FrameworkReference is the correct, supported way
+         for a plain class library to use ASP.NET Core types without hosting a web server. -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AgriLedger.Domain\AgriLedger.Domain.csproj" />
+  </ItemGroup>
+</Project>
