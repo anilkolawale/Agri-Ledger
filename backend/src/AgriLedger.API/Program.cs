@@ -152,11 +152,10 @@ if (builder.Configuration.GetValue<bool>("Seed:Demo"))
 }
 
 // ---------- Middleware pipeline ----------
-if (app.Environment.IsDevelopment())
-{
+
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+
 
 app.UseMiddleware<AgriLedger.API.Middleware.ExceptionHandlingMiddleware>();
 app.UseSerilogRequestLogging();
