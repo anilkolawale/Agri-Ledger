@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Box, Typography, Card, CardContent, Grid, FormControl, InputLabel, Select, MenuItem, CircularProgress, Stack, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
+import React, { useEffect, useState, useCallback } from "react";
+import { Box, Typography, Card, CardContent, Grid, FormControl, InputLabel, Select, MenuItem, CircularProgress, Stack, Paper } from "@mui/material";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 import { useTranslation } from "react-i18next";
@@ -36,7 +36,7 @@ const marketDisplay = (marketName, lang) => {
 };
 
 export default function MandiPricesPage() {
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
   const isMarathi = i18n.language === "mr";
 
   const [prices, setPrices] = useState([]);
@@ -57,17 +57,17 @@ export default function MandiPricesPage() {
       .catch((err) => console.error("Error loading dropdown data:", err));
   }, []);
 
-  const loadPrices = () => {
+  const loadPrices = useCallback(() => {
     setLoading(true);
     mandiApi.getPrices(selectedMarket, selectedCrop)
       .then(({ data }) => setPrices(data.data))
       .catch((err) => console.error("Error fetching prices:", err))
       .finally(() => setLoading(false));
-  };
+  }, [selectedMarket, selectedCrop]);
 
   useEffect(() => {
     loadPrices();
-  }, [selectedMarket, selectedCrop]);
+  }, [loadPrices]);
 
   return (
     <Box sx={{ pb: 4 }}>
