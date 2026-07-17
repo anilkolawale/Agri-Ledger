@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpOverrides;
 using System.Reflection;
 using System.Text;
 using AgriLedger.Application.Interfaces;
@@ -119,6 +120,14 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+// ---------- Forwarded Headers (Render / Reverse Proxy) ----------
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor |
+        ForwardedHeaders.XForwardedProto
+});
+
 // ---------- Apply Migrations at startup if requested ----------
 if (builder.Configuration.GetValue<bool>("Migrate:Database"))
 {
@@ -153,17 +162,54 @@ if (builder.Configuration.GetValue<bool>("Seed:Demo"))
 
 // ---------- Middleware pipeline ----------
 
-    app.UseSwagger();
-    app.UseSwaggerUI();
+// Render / Reverse Proxy support
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders =
+        ForwardedHeaders.XForwardedFor |
+        ForwardedHeaders.XForwardedProto
+});
 
+// Swagger
+app.UseSwagger();
+
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "AgriLedger API v1");
+    c.RoutePrefix = "swagger";
+});
 
 app.UseMiddleware<AgriLedger.API.Middleware.ExceptionHandlingMiddleware>();
+
 app.UseSerilogRequestLogging();
+
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHsts();
+}
+
 app.UseHttpsRedirection();
-app.UseStaticFiles(); // serves wwwroot/uploads (receipts) - use Azure Blob/S3 in production per spec's future enhancements
+
+app.UseStaticFiles();
+
 app.UseCors("AgriLedgerCors");
+
 app.UseAuthentication();
+
 app.UseAuthorization();
+
+// Health endpoint
+app.MapGet("/", () =>
+{
+    return Results.Ok(new
+    {
+        Application = "AgriLedger API",
+        Status = "Running",
+        Environment = app.Environment.EnvironmentName,
+        Time = DateTime.UtcNow
+    });
+});
+
 app.MapControllers();
 
 app.Run();
