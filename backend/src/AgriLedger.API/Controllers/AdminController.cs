@@ -99,5 +99,5 @@ public class AdminController : BaseApiController
 
 public class UpdateRoleRequest
 {
-    public string Role { get; set; }
+    public string Role { get; set; } = string.Empty;
 }
